@@ -30,11 +30,11 @@ func main() {
 				"eni-XXXXXXXXXXXXXXX",
 				// you can specified funciton for cheking the healthy fo ENI.
 				// if you return error in the function, the ENI is considered unhealthy vice versa.
-				func() error {return nil} 
+				func() error {return nil} ,
 			},
 			{
 				"eni-YYYYYYYYYYYYYYY",
-				func() error {return nil}
+				func() error {return nil},
 			},
 		},
 	}
@@ -46,7 +46,7 @@ func main() {
 	// Keys are "before" and "after".
 	result := c.FailOver(s) 
 	if len(eniha.GlobalErrors) != 0 {
-		// eniha.Globalerrors is added any output error of eniha to
+		// eniha.GlobalErrors is added any output error of eniha to
 		fmt.Println(eniha.GlobalErrors)
 		return
 	}

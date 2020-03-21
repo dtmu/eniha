@@ -84,12 +84,9 @@ func getNowEniIdAsync(c *Cluster, svc *ec2.EC2, nowEniId chan string) {
 				return
 			}
 		}
-		GlobalErrors = append(GlobalErrors, errors.New("DescribeRouteTables: "+c.CidrBlock+" is not found."))
-		nowEniId <- "fail"
-	} else {
-		GlobalErrors = append(GlobalErrors, errors.New("DescribeRouteTables: "+err.Error()))
-		nowEniId <- "fail"
 	}
+	GlobalErrors = append(GlobalErrors, errors.New("DescribeRouteTables: "+err.Error()))
+	nowEniId <- "fail"
 }
 
 func checkFuncAsync(c *Cluster, priority int) {
@@ -100,7 +97,6 @@ func checkFuncAsync(c *Cluster, priority int) {
 }
 
 const MAX_TRYING int = 100
-const WAIT_MILLISECOND int = 300
 
 func stopAsync(c *Cluster, nowEniId string, nextEniId chan string) {
 	if nowEniId == "fail" {
