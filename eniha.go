@@ -69,7 +69,8 @@ func getNowEniIdAsync(c *Cluster, svc *ec2.EC2, nowEniId chan string) {
 			aws.String(c.RouteTableId),
 		},
 	}
-	if result, err := svc.DescribeRouteTables(input); err == nil {
+	result, err := svc.DescribeRouteTables(input)
+	if err == nil {
 		// Just in case, to avoid panic.
 		if len(result.RouteTables) == 0 {
 			GlobalErrors = append(GlobalErrors, errors.New("DescribeRouteTables: "+c.RouteTableId+" is not found."))

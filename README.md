@@ -25,7 +25,7 @@ func main() {
 		RouteTableId: "rtb-AAAAAAAAAAAAAAA",
 		CidrBlock:    "192.168.0.0/24",
 		// ENI must be specified in order of priority.
-		Enis: []ec2ha.Eni{
+		Enis: []eniha.Eni{
 			{
 				"eni-XXXXXXXXXXXXXXX",
 				// you can specified funciton for cheking the healthy fo ENI.
