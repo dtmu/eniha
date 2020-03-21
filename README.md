@@ -3,12 +3,12 @@ eniha is golang library for HA cluster by using ENI and Route Table in AWS.
 
 For example, when traffic of specified CIDR go to the specified ENI, you may require HA cluster and hope failover from problem ENI to healthy ENI as below. eniha is library for that.
 
-### When the eni-XXXXXXXXXXXXXXX is problem.
-192.168.0.0/24 => eni-XXXXXXXXXXXXXXX
- |
- | failover!!
- V
-192.168.0.0/24 => eni-YYYYYYYYYYYYYYY
+### When the eni-XXXXXXXXXXXXXXX is problem.   
+192.168.0.0/24 => eni-XXXXXXXXXXXXXXX   
+ |   
+ | failover!!   
+ V   
+192.168.0.0/24 => eni-YYYYYYYYYYYYYYY   
 
 ## Usage
 ### 
