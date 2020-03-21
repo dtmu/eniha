@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-const MAX_PRIORITY int = 100
-
 type Cluster struct {
 	RouteTableId string
 	CidrBlock    string
@@ -30,7 +28,7 @@ func (c *Cluster) FailOver(s *session.Session) map[string]string {
 	// In paralell try to get now ENI for the route (specified CIDR) and check the health of specified ENIs
 	nowEniId := make(chan string, 1)
 	go getNowEniIdAsync(c, svc, nowEniId)
-	c.gotEniIds = make([]bool, 100)
+	c.gotEniIds = make([]bool, 10)
 	for p, _ := range c.Enis {
 		go checkFuncAsync(c, p)
 	}
